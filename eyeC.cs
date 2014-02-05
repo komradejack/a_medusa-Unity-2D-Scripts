@@ -28,10 +28,12 @@ public class eyeC : MonoBehaviour
 			{
 			Debug.Log("Fire was hit");
 			eyeOpen = true;
+			renderer.enabled = true;
 			}
 		if(Input.GetButtonUp("Fire1"))
 			{
 			eyeOpen = false;	
+			renderer.enabled = false;
 			//audio.Play();
 			}
 	}
