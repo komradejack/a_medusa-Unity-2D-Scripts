@@ -3,14 +3,14 @@ using System.Collections;
 
 public class eyeC : MonoBehaviour
 {
-	
-	public bool eyeOpen = true;				
+	public GameObject stonedEnemy;
+	public bool eyeOpen = false;				
 
 
 
 	void Awake()
 	{
-	
+	eyeOpen = false;	
 	}
 	void OnTriggerEnter2D (Collider2D col) 
 	{
@@ -18,6 +18,8 @@ public class eyeC : MonoBehaviour
 		if(col.tag == "ENEMY" && (eyeOpen == true))
 		{
 			 print( "ENEMY is STONED" );
+			 
+			 Instantiate(stonedEnemy, transform.position,transform.rotation);
 		}
 		}
 
