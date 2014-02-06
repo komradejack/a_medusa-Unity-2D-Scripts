@@ -19,7 +19,7 @@ public class eyeC : MonoBehaviour
 		{
 			 print( "ENEMY is STONED" );
 			 
-			 Instantiate(stonedEnemy, transform.position,transform.rotation);
+			 //Instantiate(stonedEnemy, transform.position,transform.rotation);
 		}
 		}
 

@@ -5,6 +5,7 @@ public class enemyStoned : MonoBehaviour {
 
 	public bool eyeOpen = false;	
 	public GameObject stonedEnemy;
+	public int stoneCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +35,7 @@ public class enemyStoned : MonoBehaviour {
 		if(col.tag == "EYE" && (eyeOpen == true))
 		{
 			 print( "Destroy enemy object" );
+			
 			 Destroy(gameObject);
 			 Instantiate(stonedEnemy, transform.position,transform.rotation);
 		}
