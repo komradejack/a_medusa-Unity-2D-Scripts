@@ -12,6 +12,7 @@ public class RobotControllerScript : MonoBehaviour {
 	float groundRadius = 0.2f;
 	public LayerMask whatIsGround;
 	public float jumpForce= 700;
+	public AudioClip playerBump;
 
 	// Use this for initialization
 	void Start () {
@@ -57,4 +58,14 @@ public class RobotControllerScript : MonoBehaviour {
 	theScale.x *= -1;
 	transform.localScale = theScale;
 	}
-}
+	
+	void OnCollisionEnter2D (Collision2D col)
+	{
+		// If the colliding gameobject is an Obstacle...
+		if(col.gameObject.tag == "Obstacle")
+		{
+			AudioSource.PlayClipAtPoint(playerBump, transform.position);
+		}
+	
+	}
+	}
