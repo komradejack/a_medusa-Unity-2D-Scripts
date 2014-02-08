@@ -12,7 +12,7 @@ public class enemyStoned : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
+	// Update is called once per frame 
 	void Update ()
 	{
 		// If the fire button is pressed...
