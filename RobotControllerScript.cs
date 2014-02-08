@@ -13,6 +13,8 @@ public class RobotControllerScript : MonoBehaviour {
 	public LayerMask whatIsGround;
 	public float jumpForce= 700;
 	public AudioClip playerBump;
+	public AudioClip playerBumpEnemy;
+	public AudioClip playerJump;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +32,6 @@ public class RobotControllerScript : MonoBehaviour {
 		anim.SetFloat("Speed", Mathf.Abs(move));
 
 		
-		
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 		
 		if(move > 0 &&!facingRight)
@@ -45,6 +46,7 @@ public class RobotControllerScript : MonoBehaviour {
 		{
 			//anim.SetBool("Ground, false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
+			AudioSource.PlayClipAtPoint(playerJump, transform.position);
 		}
 	
 	
@@ -58,7 +60,7 @@ public class RobotControllerScript : MonoBehaviour {
 	theScale.x *= -1;
 	transform.localScale = theScale;
 	}
-	
+	//Play sound when you hit an obstacle or stones enemy
 	void OnCollisionEnter2D (Collision2D col)
 	{
 		// If the colliding gameobject is an Obstacle...
@@ -66,6 +68,14 @@ public class RobotControllerScript : MonoBehaviour {
 		{
 			AudioSource.PlayClipAtPoint(playerBump, transform.position);
 		}
+		
+		//Play Sound when you hit an enemy
+		if(col.gameObject.tag == "ENEMY")
+		{
+			AudioSource.PlayClipAtPoint(playerBumpEnemy, transform.position);
+		}
 	
 	}
+	
+	
 	}
