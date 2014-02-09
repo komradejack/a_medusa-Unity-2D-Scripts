@@ -8,6 +8,7 @@ public class RobotControllerScript : MonoBehaviour {
 	bool facingRight = true;
 	Animator anim;
 	bool grounded = false;
+	bool audioJumpRetrigger = false;
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask whatIsGround;
@@ -15,6 +16,7 @@ public class RobotControllerScript : MonoBehaviour {
 	public AudioClip playerBump;
 	public AudioClip playerBumpEnemy;
 	public AudioClip playerJump;
+	public AudioClip playerLand;
 
 	// Use this for initialization
 	void Start () {
@@ -28,16 +30,15 @@ public class RobotControllerScript : MonoBehaviour {
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
 		float move = Input.GetAxis ("Horizontal");
-		
 		anim.SetFloat("Speed", Mathf.Abs(move));
-
-		
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 		
 		if(move > 0 &&!facingRight)
 			Flip ();
 		else if(move < 0 && facingRight)
 			Flip ();
+			
+			
 		
 	}
 	void Update()
@@ -47,9 +48,12 @@ public class RobotControllerScript : MonoBehaviour {
 			//anim.SetBool("Ground, false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
 			AudioSource.PlayClipAtPoint(playerJump, transform.position);
+			//Allow the land sound to play
+			audioJumpRetrigger = true;
+		
 		}
 	
-	
+			
 	}
 	
 	
@@ -74,8 +78,20 @@ public class RobotControllerScript : MonoBehaviour {
 		{
 			AudioSource.PlayClipAtPoint(playerBumpEnemy, transform.position);
 		}
+		
+		// If the colliding gameobject is the floor...
+		if(col.gameObject.tag == "Floor" && audioJumpRetrigger == true)
+		{
+			AudioSource.PlayClipAtPoint(playerLand, transform.position);
+			//Land sound wont play until player jumps again
+			audioJumpRetrigger = false;
+			
+		}
 	
 	}
 	
 	
 	}
+	
+	
+	

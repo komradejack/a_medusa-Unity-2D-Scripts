@@ -4,8 +4,10 @@ using System.Collections;
 public class enemyStoned : MonoBehaviour {
 
 	public bool eyeOpen = false;	
+	public bool chatPlayer = true;
 	public GameObject stonedEnemy;
 	public int stoneCount = 0;
+	public AudioClip playerPass;
 
 	// Use this for initialization
 	void Start () {
@@ -39,5 +41,26 @@ public class enemyStoned : MonoBehaviour {
 			 Destroy(gameObject);
 			 Instantiate(stonedEnemy, transform.position,transform.rotation);
 		}
+		// If it is hit by the player
+		if(col.tag == "Player" && chatPlayer == true)
+		{
+			 print( "Player Pass by" );
+			 AudioSource.PlayClipAtPoint(playerPass, transform.position);
+			 //disable the sound from triggering until player leaves enemy
+			 chatPlayer = false;
 		}
+		
+	
+		}
+		void OnTriggerExit2D (Collider2D col)
+					{
+		
+						// If the player leaves
+						if(col.tag == "Player" && chatPlayer == false)
+						{
+						print( "Player Left" );
+						//enable the sound
+						chatPlayer = true;
+						}
+					}
 }
