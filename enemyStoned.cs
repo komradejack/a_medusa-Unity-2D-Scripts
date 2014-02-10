@@ -14,6 +14,7 @@ public class enemyStoned : MonoBehaviour {
 	
 	}
 	
+	
 	// Update is called once per frame 
 	void Update ()
 	{
@@ -45,7 +46,8 @@ public class enemyStoned : MonoBehaviour {
 		if(col.tag == "Player" && chatPlayer == true)
 		{
 			 print( "Player Pass by" );
-			 AudioSource.PlayClipAtPoint(playerPass, transform.position);
+			 //AudioSource.PlayClipAtPoint(playerPass, transform.position);
+			 audio.PlayOneShot(playerPass,1.0f);
 			 //disable the sound from triggering until player leaves enemy
 			 chatPlayer = false;
 		}

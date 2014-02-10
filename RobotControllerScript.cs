@@ -47,7 +47,8 @@ public class RobotControllerScript : MonoBehaviour {
 		{
 			//anim.SetBool("Ground, false);
 			rigidbody2D.AddForce(new Vector2(0, jumpForce));
-			AudioSource.PlayClipAtPoint(playerJump, transform.position);
+			//AudioSource.PlayClipAtPoint(playerJump, transform.position);
+			audio.PlayOneShot(playerJump,1.0f);
 			//Allow the land sound to play
 			audioJumpRetrigger = true;
 		
@@ -82,7 +83,8 @@ public class RobotControllerScript : MonoBehaviour {
 		// If the colliding gameobject is the floor...
 		if(col.gameObject.tag == "Floor" && audioJumpRetrigger == true)
 		{
-			AudioSource.PlayClipAtPoint(playerLand, transform.position);
+			//AudioSource.PlayClipAtPoint(playerLand, transform.position);
+			audio.PlayOneShot(playerLand,1.0f);
 			//Land sound wont play until player jumps again
 			audioJumpRetrigger = false;
 			
