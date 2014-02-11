@@ -86,8 +86,7 @@ public class RobotControllerScript : MonoBehaviour {
 			//AudioSource.PlayClipAtPoint(playerLand, transform.position);
 			audio.PlayOneShot(playerLand,1.0f);
 			//Land sound wont play until player jumps again
-			audioJumpRetrigger = false;
-			
+			audioJumpRetrigger = false;	
 		}
 	
 	}
