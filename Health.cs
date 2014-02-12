@@ -15,6 +15,8 @@ void OnCollisionEnter2D (Collision2D col)
 		// If the colliding gameobject is an Enemy...
 		if(col.gameObject.tag == "ENEMYOUCH")
 		{
+			rigidbody2D.AddForce(new Vector2(0, 100));
+			
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
 			if (Time.time > lastHitTime + repeatDamagePeriod) 
 			{
@@ -25,28 +27,18 @@ void OnCollisionEnter2D (Collision2D col)
 					
 					lastHitTime = Time.time; 
 					// Create a vector that's from the enemy to the player with an upwards boost.
-					Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
-
-					// Add a force to the player in the direction of the vector and multiply by the hurtForce.
-					rigidbody2D.AddForce(hurtVector * hurtForce);
-
+					
+					
 					// Reduce the player's health by 10.
 					health -= damageAmount;
 				}
 				
 	}
-
-
-	
-
-
-
-
-
-
-
-
-
+   }
 }
-}
+  
+  
+
+	  
+  
 }

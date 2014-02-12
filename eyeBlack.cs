@@ -19,12 +19,12 @@ public class eyeBlack : MonoBehaviour
 			{
 			Debug.Log("Black was turned off");
 			
-			renderer.enabled = false;
+			renderer.enabled = true;
 			}
 		if(Input.GetButtonUp("Fire1"))
 			{
 				
-			renderer.enabled = true;
+			renderer.enabled = false;
 			//audio.Play();
 			}
 	}

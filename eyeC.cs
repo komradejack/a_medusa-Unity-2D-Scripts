@@ -4,13 +4,13 @@ using System.Collections;
 public class eyeC : MonoBehaviour
 {
 	public GameObject stonedEnemy;
-	public bool eyeOpen = false;				
+	public bool eyeOpen = true;				
 
 
 
 	void Awake()
 	{
-	eyeOpen = false;	
+	eyeOpen = true;	
 	}
 	void OnTriggerEnter2D (Collider2D col) 
 	{
@@ -29,13 +29,13 @@ public class eyeC : MonoBehaviour
 		if(Input.GetButtonDown("Fire1"))
 			{
 			Debug.Log("Fire was hit");
-			eyeOpen = true;
-			renderer.enabled = true;
+			eyeOpen = false;
+			renderer.enabled = false;
 			}
 		if(Input.GetButtonUp("Fire1"))
 			{
-			eyeOpen = false;	
-			renderer.enabled = false;
+			eyeOpen = true;	
+			renderer.enabled = true;
 			//audio.Play();
 			}
 	}

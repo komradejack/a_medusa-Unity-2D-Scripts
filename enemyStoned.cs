@@ -22,11 +22,11 @@ public class enemyStoned : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1"))
 			{
 			Debug.Log("Fire was hit");
-			eyeOpen = true;
+			eyeOpen = false;
 			}
 		if(Input.GetButtonUp("Fire1"))
 			{
-			eyeOpen = false;	
+			eyeOpen = true;	
 		
 			//audio.Play();
 			}
