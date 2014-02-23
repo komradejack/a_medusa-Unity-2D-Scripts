@@ -15,7 +15,9 @@ void OnCollisionEnter2D (Collision2D col)
 		// If the colliding gameobject is an Enemy...
 		if(col.gameObject.tag == "ENEMYOUCH")
 		{
-			rigidbody2D.AddForce(new Vector2(0, 100));
+			float direction = Mathf.Sign(transform.position.x - col.transform.position.x);
+			rigidbody2D.velocity = new Vector2(0.0f, 0.0f);
+			rigidbody2D.AddForce(new Vector2(direction * 3000, 300));
 			
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
 			if (Time.time > lastHitTime + repeatDamagePeriod) 
