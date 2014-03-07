@@ -11,7 +11,7 @@ public class Walker : MonoBehaviour
   /// Object speed
   /// </summary>
   public Vector2 speed = new Vector2(10, 10);
-  public interval = 1
+  public int interval = 1;
 
   /// <summary>
   /// Moving direction
@@ -32,5 +32,21 @@ public class Walker : MonoBehaviour
   {
     // Apply movement to the rigidbody
     rigidbody2D.velocity = movement;
+	
   }
-}
+
+	void OnCollisionEnter2D (Collision2D col)
+	{
+		// If the colliding gameobject is an Obstacle...
+		if(col.gameObject.tag == "Player")
+		{
+
+			print("Destroy enemy object due to NME+Player collision" );
+			Destroy(gameObject);
+		}
+		
+
+		
+	}
+  
+	}
