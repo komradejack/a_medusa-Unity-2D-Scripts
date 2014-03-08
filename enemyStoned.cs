@@ -19,14 +19,15 @@ public class enemyStoned : MonoBehaviour {
 	void Update ()
 	{
 		// If the fire button is pressed...
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Horizontal"))
 			{
-			Debug.Log("Fire was hit");
-			eyeOpen = false;
+			Debug.Log("eyeOpen = true");
+			eyeOpen = true;
 			}
-		if(Input.GetButtonUp("Fire1"))
+		if(Input.GetButtonUp("Horizontal"))
 			{
-			eyeOpen = true;	
+			Debug.Log("eyeOpen = false");
+			eyeOpen = false;	
 		
 			//audio.Play();
 			}
@@ -38,20 +39,10 @@ public class enemyStoned : MonoBehaviour {
 		if(col.tag == "EYE" && (eyeOpen == true))
 		{
 			 print( "Destroy enemy object" );
-			
 			 Destroy(gameObject);
 			 Instantiate(stonedEnemy, transform.position,transform.rotation);
 		}
-		// If it is hit by the player
-		if(col.tag == "Player" && chatPlayer == true)
-		{
-			 print( "Player Pass by" );
-			 //AudioSource.PlayClipAtPoint(playerPass, transform.position);
-			 audio.PlayOneShot(playerPass,1.0f);
-			 //disable the sound from triggering until player leaves enemy
-			 chatPlayer = false;
-		}
-		
+	
 	
 		}
 		void OnTriggerExit2D (Collider2D col)

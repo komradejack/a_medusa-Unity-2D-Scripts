@@ -10,7 +10,7 @@ public class eyeC : MonoBehaviour
 
 	void Awake()
 	{
-	eyeOpen = true;	
+	//eyeOpen = true;	
 	}
 	void OnTriggerEnter2D (Collider2D col) 
 	{
@@ -19,23 +19,25 @@ public class eyeC : MonoBehaviour
 		{
 			 print( "ENEMY is STONED" );
 			 
-			 //Instantiate(stonedEnemy, transform.position,transform.rotation);
+			 Instantiate(stonedEnemy, transform.position,transform.rotation);
 		}
 		}
 
 	void Update ()
 	{
 		// If the fire button is pressed...
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonUp("Horizontal"))
 			{
-			Debug.Log("Fire was hit");
+			Debug.Log("Horizontal was hit");
 			eyeOpen = false;
 			renderer.enabled = false;
+			//collider2D.enabled = false;
 			}
-		if(Input.GetButtonUp("Fire1"))
+		if(Input.GetButtonDown("Horizontal"))
 			{
 			eyeOpen = true;	
 			renderer.enabled = true;
+			//collider2D.enabled = true;
 			//audio.Play();
 			}
 	}

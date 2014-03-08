@@ -40,13 +40,17 @@ public class Walker : MonoBehaviour
 		// If the colliding gameobject is an Obstacle...
 		if(col.gameObject.tag == "Player")
 		{
-
 			print("Destroy enemy object due to NME+Player collision" );
 			Destroy(gameObject);
 		}
-		
+		// If the colliding gameobject is an Obstacle...
+		if(col.gameObject.tag == "EYE")
+		{
+			print("Destroy enemy object due to NME+Player collision" );
+			Destroy(gameObject);
+		}
 
-		
-	}
+	
   
 	}
+}
