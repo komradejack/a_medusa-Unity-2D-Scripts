@@ -28,9 +28,7 @@ void OnCollisionEnter2D (Collision2D col)
 					// ... take damage and reset the lastHitTime.
 					
 					lastHitTime = Time.time; 
-					// Create a vector that's from the enemy to the player with an upwards boost.
-					
-					
+
 					// Reduce the player's health by 10.
 					health -= damageAmount;
 				}

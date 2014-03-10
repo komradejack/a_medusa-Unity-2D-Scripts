@@ -3,14 +3,18 @@ using System.Collections;
 
 public class UIHealth : MonoBehaviour {
 
+	//public GameObject characterHealth;
+	//public health = GameObject.Find("character").GetComponent<Health>();
+
+
 	// Use this for initialization
 	void Start () {
-	//Health h = GameObject.Find("character").GetComponent<Health>();
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	//guiText.text = h;
+		//guiText.text = health;
 	}
 }
