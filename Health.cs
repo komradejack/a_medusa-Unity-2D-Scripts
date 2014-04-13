@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
+	public int saved = 0;	
 	public int health = 5;						// The player's health.
 	public float repeatDamagePeriod = 2f;		// How frequently the player can be damaged.
 
